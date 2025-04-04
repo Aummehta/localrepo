@@ -1,2 +1,717 @@
-<p>Hello world</p>
-<p>this is new</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aum Mehta - Portfolio</title>
+    <style>
+        :root {
+            --primary-color: #2b6cb0;
+            --secondary-color: #4299e1;
+            --dark-color: #1a202c;
+            --light-color: #f7fafc;
+            --accent-color: #4fd1c5;
+            --gray-color: #718096;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: var(--light-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--primary-color);
+        }
+        
+        .header-text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header-text h2 {
+            font-size: 1.2rem;
+            font-weight: normal;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .nav-list {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-list li a {
+            display: block;
+            padding: 1rem 1.5rem;
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-list li a:hover {
+            color: var(--primary-color);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--primary-color);
+        }
+        
+        /* About Section */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        .skill-category {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: 300px;
+            text-align: center;
+        }
+        
+        .skill-category h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+        
+        .skill-item {
+            background-color: var(--light-color);
+            border-radius: 20px;
+            padding: 0.4rem 0.8rem;
+            font-size: 0.9rem;
+        }
+        
+        /* Experience Section */
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: "";
+            position: absolute;
+            height: 100%;
+            width: 2px;
+            background-color: var(--gray-color);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            margin-bottom: 2rem;
+            position: relative;
+            width: 100%;
+        }
+        
+        .timeline-content {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            width: calc(50% - 30px);
+            margin-left: auto;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 0;
+            margin-right: auto;
+        }
+        
+        .timeline-item::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .timeline-date {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-img {
+            height: 200px;
+            background-color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-content h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .project-tag {
+            background-color: var(--light-color);
+            border-radius: 20px;
+            padding: 0.3rem 0.6rem;
+            font-size: 0.8rem;
+        }
+        
+        /* Education & Certifications */
+        .edu-grid, .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .edu-card, .cert-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .edu-card h3, .cert-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .edu-date, .cert-date {
+            font-size: 0.9rem;
+            color: var(--gray-color);
+            margin-bottom: 1rem;
+        }
+        
+        /* Achievements Section */
+        .achievements-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .achievement-item {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .nav-list {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px;
+            }
+            
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 60px;
+                margin-right: 0;
+            }
+            
+            .timeline-item::after {
+                left: 30px;
+            }
+            
+            .projects-grid, .edu-grid, .cert-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header id="home">
+        <div class="container header-content">
+            <div class="profile-pic">AM</div>
+            <div class="header-text">
+                <h1>Aum Mehta</h1>
+                <h2>Information Technology Student | Web Developer</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📍</span>
+                        <span>Ahmedabad, Gujarat</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>📞</span>
+                        <span>+91 7016747700</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>✉️</span>
+                        <span>aum281004@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>💻</span>
+                        <a href="#" style="color: white; text-decoration: none;">LeetCode Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <ul class="nav-list">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+            </div>
+            <div class="about-content">
+                <p>I am an enthusiastic IT professional with solid technical expertise and strong problem-solving skills. Currently pursuing my B.Tech in Information Technology at Charusat University, I'm passionate about using web development and machine learning to tackle real-life challenges. I aim to contribute meaningfully to innovative, dynamic teams and create impactful solutions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" style="background-color: #f0f7ff;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Technical Skills</h2>
+            </div>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">C/C++</span>
+                        <span class="skill-item">Java</span>
+                        <span class="skill-item">Python</span>
+                        <span class="skill-item">JavaScript</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Web Development</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">HTML5</span>
+                        <span class="skill-item">Bootstrap.js</span>
+                        <span class="skill-item">ReactJs</span>
+                        <span class="skill-item">NodeJs</span>
+                        <span class="skill-item">EJS</span>
+                        <span class="skill-item">RESTful APIs</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Databases</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">SQL</span>
+                        <span class="skill-item">MongoDB</span>
+                        <span class="skill-item">DBMS</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Technologies</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">PowerBI</span>
+                        <span class="skill-item">Git</span>
+                        <span class="skill-item">GitHub</span>
+                        <span class="skill-item">Windows</span>
+                        <span class="skill-item">Linux</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Core Subjects</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Data Structures & Algorithms</span>
+                        <span class="skill-item">Object-Oriented Programming</span>
+                        <span class="skill-item">Database Management Systems</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-title">
+                <h2>Work Experience</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-date">June 2024</span>
+                        <h3>Full Stack Web Development Intern</h3>
+                        <h4>MEGA IT Company, Ahmedabad, Gujarat</h4>
+                        <ul style="list-style-position: inside; margin-top: 1rem;">
+                            <li>Completed a 1-month internship focused on full stack web development.</li>
+                            <li>Designed and implemented RESTful APIs to enable seamless communication between frontend and backend.</li>
+                            <li>Utilized EJS templates for server-side rendering and dynamic content generation in Node.js.</li>
+                            <li>Implemented user authentication workflows, including secure login and signup pages.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" style="background-color: #f0f7ff;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Projects</h2>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-img">Hotel Booking System</div>
+                    <div class="project-content">
+                        <h3>Hotel Booking System</h3>
+                        <p>A complete CRUD operation system for managing hotels and listings with image upload features and user authentication.</p>
+                        <ul style="list-style-position: inside; margin-top: 1rem;">
+                            <li>Executed a CRUD operation system for managing hotels and listings.</li>
+                            <li>Integrated an image upload feature to create visually compelling listings.</li>
+                            <li>Developed login and signup pages with proper user authentication workflows.</li>
+                            <li>Designed a home page with a list of all hotels and an option to create a new hotel listing.</li>
+                        </ul>
+                        <div class="project-tags">
+                            <span class="project-tag">Node.js</span>
+                            <span class="project-tag">MongoDB</span>
+                            <span class="project-tag">EJS</span>
+                            <span class="project-tag">Express</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">Live Video Conferencing System</div>
+                    <div class="project-content">
+                        <h3>Live Video Conferencing System</h3>
+                        <p>A real-time video conferencing application with chat, screen sharing, and call history features.</p>
+                        <ul style="list-style-position: inside; margin-top: 1rem;">
+                            <li>Developed a live video conferencing app using WebSockets and WebRTC for real-time communication.</li>
+                            <li>Integrated real-time chat, video calling, screen sharing, and mute/unmute functionalities.</li>
+                            <li>Implemented a call history feature to log completed video sessions.</li>
+                        </ul>
+                        <div class="project-tags">
+                            <span class="project-tag">WebRTC</span>
+                            <span class="project-tag">WebSockets</span>
+                            <span class="project-tag">JavaScript</span>
+                            <span class="project-tag">Node.js</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">Doctor Appointment System</div>
+                    <div class="project-content">
+                        <h3>Doctor Appointment System</h3>
+                        <p>A multi-role system for managing doctor appointments with dedicated interfaces for different user types.</p>
+                        <ul style="list-style-position: inside; margin-top: 1rem;">
+                            <li>Engineered a multi-role system with dedicated interfaces for Admin, Doctor, and Patient.</li>
+                            <li>Streamlined the doctor registration and approval process from the admin.</li>
+                            <li>Enabled efficient appointment management with clear approval/rejection of users from doctors.</li>
+                        </ul>
+                        <div class="project-tags">
+                            <span class="project-tag">React.js</span>
+                            <span class="project-tag">Node.js</span>
+                            <span class="project-tag">MongoDB</span>
+                            <span class="project-tag">Authentication</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <div class="section-title">
+                <h2>Education</h2>
+            </div>
+            <div class="edu-grid">
+                <div class="edu-card">
+                    <h3>B.Tech. (Information Technology)</h3>
+                    <div class="edu-date">2022 - 2026</div>
+                    <p><strong>Institution:</strong> Charusat University</p>
+                    <p><strong>CGPA:</strong> 9.2</p>
+                </div>
+                <div class="edu-card">
+                    <h3>Senior Secondary (12th Grade)</h3>
+                    <div class="edu-date">2022</div>
+                    <p><strong>Board:</strong> GSEB Board</p>
+                    <p><strong>Percentage:</strong> 78%</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" style="background-color: #f0f7ff;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Certifications</h2>
+            </div>
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <h3>Data Structure and Algorithms using Java</h3>
+                    <p>Score: 79 (Elite + Silver)</p>
+                    <a href="#" style="color: var(--primary-color);">Verify Certificate</a>
+                </div>
+                <div class="cert-card">
+                    <h3>Database Management System</h3>
+                    <p>Score: 70 (Elite medal)</p>
+                    <a href="#" style="color: var(--primary-color);">Verify Certificate</a>
+                </div>
+                <div class="cert-card">
+                    <h3>MongoDB Node.js Developer Path</h3>
+                    <a href="#" style="color: var(--primary-color);">Verify Certificate</a>
+                </div>
+                <div class="cert-card">
+                    <h3>Web Development Bootcamp From Udemy</h3>
+                    <a href="#" style="color: var(--primary-color);">Verify Certificate</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements">
+        <div class="container">
+            <div class="section-title">
+                <h2>Achievements</h2>
+            </div>
+            <div class="achievements-list">
+                <div class="achievement-item">
+                    <h3>Finalist at Meditab Hackathon</h3>
+                    <p>Successfully developed and presented an innovative solution at the Meditab Hackathon, advancing to the final round.</p>
+                </div>
+                <div class="achievement-item">
+                    <h3>Advanced to Final Round in the 2024 Solution Challenge Hackathon</h3>
+                    <p>Created a high-quality solution that was selected for the final round of the prestigious 2024 Solution Challenge Hackathon.</p>
+                </div>
+                <div class="achievement-item">
+                    <h3>3rd Rank in College Competitive Programming Contest</h3>
+                    <p>Demonstrated strong problem-solving and algorithmic skills by securing the 3rd position in a competitive programming contest at college.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="background-color: #f0f7ff;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Me</h2>
+            </div>
+            <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+                <p>I'm always open to discussing new projects, opportunities, or partnerships. Feel free to reach out to me using any of the following methods:</p>
+                
+                <div style="margin: 2rem 0; display: flex; flex-direction: column; gap: 1rem;">
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                        <span style="font-size: 1.5rem;">📞</span>
+                        <span>+91 7016747700</span>
+                    </div>
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                        <span style="font-size: 1.5rem;">✉️</span>
+                        <span>aum281004@gmail.com</span>
+                    </div>
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                        <span style="font-size: 1.5rem;">📍</span>
+                        <span>Ahmedabad, Gujarat, India</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <h3>Aum Mehta</h3>
+            <p>Information Technology Student & Web Developer</p>
+            <div class="social-links">
+                <a href="#" class="social-link">G</a>
+                <a href="#" class="social-link">L</a>
+                <a href="#" class="social-link">T</a>
+            </div>
+            <p>&copy; 2025 Aum Mehta. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
