@@ -58,6 +58,13 @@
             justify-content: center;
             font-size: 3rem;
             color: var(--primary-color);
+            overflow: hidden;
+        }
+        
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         .header-text h1 {
@@ -396,10 +403,14 @@
     <!-- Header Section -->
     <header id="home">
         <div class="container header-content">
-            <div class="profile-pic">AM</div>
+            <div class="profile-pic">
+                <!-- Replace with your actual photo -->
+                <img src="https://media.licdn.com/dms/image/v2/D4D35AQGMYqvuGkzWFQ/profile-framedphoto-shrink_400_400/profile-framedphoto-shrink_400_400/0/1736255455685?e=1744340400&v=beta&t=K_z5NgSnjCcDA-LYhoJoGmCwpVK6x757AwS9pTjfBCM" alt="Aum Mehta">
+                <!-- Note: When implementing, replace the placeholder with your actual photo path -->
+            </div>
             <div class="header-text">
                 <h1>Aum Mehta</h1>
-                <h2>Information Technology Student | Web Developer</h2>
+                <h2>Information Technology Student | Software Developer</h2>
                 <div class="contact-info">
                     <div class="contact-item">
                         <span>📍</span>
@@ -591,6 +602,25 @@
                             <span class="project-tag">Node.js</span>
                             <span class="project-tag">MongoDB</span>
                             <span class="project-tag">Authentication</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">Online Stock Application</div>
+                    <div class="project-content">
+                        <h3>Online Stock Application</h3>
+                        <p>A multi-page React application for monitoring and analyzing stock market data with interactive visualizations.</p>
+                        <ul style="list-style-position: inside; margin-top: 1rem;">
+                            <li>Developed a comprehensive stock tracking application with multiple pages using React.</li>
+                            <li>Implemented data visualization using doughnut charts to represent stock information clearly.</li>
+                            <li>Created a MongoDB database structure to store and manage stock data efficiently.</li>
+                            <li>Built interactive dashboards showing real-time market trends and investment performance.</li>
+                        </ul>
+                        <div class="project-tags">
+                            <span class="project-tag">React.js</span>
+                            <span class="project-tag">MongoDB</span>
+                            <span class="project-tag">Chart.js</span>
+                            <span class="project-tag">Data Visualization</span>
                         </div>
                     </div>
                 </div>
